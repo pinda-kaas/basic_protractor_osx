@@ -1,37 +1,21 @@
-describe('angularjs homepage', function() {
-  it('should greet the named user', function() {
-    browser.get('http://www.angularjs.org');
+describe('console log test', function () {
 
-    element(by.model('yourName')).sendKeys('Julie');
 
-    var greeting = element(by.binding('yourName'));
+    it('should show success in console', function () {
+        browser.get('http://localhost:63342/basic_protractor_osx/index.html');
 
-    expect(greeting.getText()).toEqual('Hello Julie!');
-  });
+        //expect(element(by.css('body > a')).getAttribute('value')).toEqual('hier');
+        expect(element(by.css('body > a')).getAttribute('text')).toEqual('hier');
 
-  describe('todo list', function() {
-    var todoList;
 
-    beforeEach(function() {
-      browser.get('http://www.angularjs.org');
+        var elm = element(by.css("body > a"));
+        expect(elm.getText()).toEqual("My Text");
 
-      todoList = element.all(by.repeater('todo in todoList.todos'));
+
     });
 
-    it('should list todos', function() {
-      expect(todoList.count()).toEqual(2);
-      expect(todoList.get(1).getText()).toEqual('build an angular app');
-    });
 
-    it('should add a todo', function() {
-      var addTodo = element(by.model('todoList.todoText'));
-      var addButton = element(by.css('[value="add"]'));
+    //select anchor plase contact us
+   //expect(element(    by.xpath('//*[@id="main"]/section/div/section[2]/section[2]/div[2]/p[5]/a')).getAttribute('href')).toEqual('sdfdsfsd');
 
-      addTodo.sendKeys('write a protractor test');
-      addButton.click();
-
-      expect(todoList.count()).toEqual(3);
-      expect(todoList.get(2).getText()).toEqual('write a protractor test');
-    });
-  });
 });

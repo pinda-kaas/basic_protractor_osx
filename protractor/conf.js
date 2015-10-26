@@ -4,7 +4,13 @@ exports.config = {
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    'chromeOptions': {
+      args: ['--test-type']
+    },
+    'loggingPrefs': {
+      browser: 'ALL'
+    }
   },
 
   // Framework to use. Jasmine 2 is recommended.
